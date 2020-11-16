@@ -5,8 +5,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx",
+    "lint:fix": "yarn lint --fix",
+    "type-check": "tsc"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": [
+        "yarn type-check && lint-staged"
+      ]
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "yarn lint:fix"
+    ]
+  }, 
   "dependencies": {
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
