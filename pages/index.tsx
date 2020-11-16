@@ -1,6 +1,21 @@
 import React, { FC } from 'react';
-import { Heading } from '@chakra-ui/react';
+import { Chakra } from 'components/Chakra';
 
-const Home: FC = () => <Heading>Hello world</Heading>;
+// components
+import Test from 'components/Test';
+
+type Props = {
+  cookies: any;
+};
+
+const Home: FC<Props> = ({ cookies }) => {
+  return (
+    <Chakra cookies={cookies}>
+      <Test />
+    </Chakra>
+  );
+};
+
+export { getServerSideProps } from 'components/Chakra';
 
 export default Home;
